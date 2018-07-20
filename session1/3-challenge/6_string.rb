@@ -6,5 +6,23 @@
 #
 
 def odds_and_evens(string, return_odds)
+    
+    array = string.split("")
+    collection = []
+    
+    if return_odds then
+        for i in 0...(array.length) do
+            if i % 2 == 1 then
+                collection << array[i]
+            end
+        end
+    else
+        for i in 0...(array.length) do
+            if i % 2 == 0 then
+                collection << array[i]
+            end
+        end
+    end
 
+    collection.join
 end
