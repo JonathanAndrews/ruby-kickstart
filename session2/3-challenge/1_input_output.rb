@@ -9,5 +9,14 @@
 
 def sum_difference_product
   # your code goes here
-  
+    input = gets.chomp
+    store = input.split
+    arr = []
+    store.map do |num|
+        arr << num.to_i
+    end
+    puts "#{arr[0] + arr[1]}"
+    puts "#{arr[0] - arr[1]}"
+    puts "#{arr[0] * arr[1]}"
 end
+

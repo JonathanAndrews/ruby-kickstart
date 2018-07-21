@@ -15,3 +15,22 @@
 # prime_chars? ['a', 'bcd']       # => false
 # prime_chars? ['a', 'b', 'cd']   # => false
 
+def is_prime?(int)
+    i = 2
+    while i < int
+        if int % i == 0
+            return false
+        end
+        i += 1
+    end
+    true
+end
+
+
+def prime_chars? arr
+    string_len = arr.join("").length
+    if string_len <= 1 then return false end
+    is_prime?(string_len)
+end
+
+puts prime_chars? []

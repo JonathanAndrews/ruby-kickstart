@@ -9,3 +9,15 @@
 # alternate_words("Can't we all get along?")      # => ["Can't", "all", "along"]
 # alternate_words("Elementary, my dear Watson!")  # => ["Elementary", "dear"]
 
+def alternate_words(string)
+    arr = string.gsub(/[^a-zA-Z '’]/, " ").split(" ")
+    new_arr = []
+    arr.each_with_index do |v, i|
+        if i % 2 == 0
+        new_arr << v
+        end
+    end
+    new_arr
+end
+
+#puts alternate_words("Would a dating service on the net be frowned upon . . . ? I hope not. But even if it is, don’t let that stop you from notifying me via net mail if you start one.")
