@@ -31,7 +31,7 @@
 # lissa.blogs                     # => [#<Blog:0x007fec28c49b88
 #     @date=#<Date: 2010-05-28 ((2455345j,0s,0n),+0s,2299161j)>,
 #     @text="Sailor Mars is my favourite",
-#       @user=#<User:0x007fec2902e5c8 @blogs=[...], @username="QTSort">>] 
+#       @user=#<User:0x007fec2902e5c8 @blogs=[...], @username="QTSort">>]
 #
 # blog1 = lissa.blogs.first
 # blog1.user                      # => lissa
@@ -80,15 +80,15 @@ class User
         @username = username
         @blogs = []
     end
-    
+
     attr_accessor :username
-    
+
     def add_blog(date, text)
         @date = date
         @text = text
-        @blogs << [@date, @text, @username]
+        @blogs << Blog.new(@date, self, @text)
     end
-    
+
     def blogs
         @blogs.sort! { |x, y| y[0] <=> 1[0]}
     end
@@ -97,27 +97,27 @@ end
 class Blog
     def initialize(date, user, text)
         @date = date
-        @user = user 
+        @user = user
         @text = text
     end
-    
+
     def entry
         "#{@user.username} #{@date}\n#{@text}"
     end
-    
+
     attr_accessor :date
     attr_accessor :user
     attr_accessor :text
-    
+
     def summary
         array = @text.split
         array[0...10].join(" ")
     end
-    
+
     def ==(other)
         return self.date == other.date && self.user == other.user && self.text == other.text
     end
-    
+
 end
 
 
@@ -126,7 +126,7 @@ end
 
 =begin
 lissa = User.new 'QTSort'
-p lissa.username 
+p lissa.username
 puts "11111111111111111111111"
 p lissa.blogs
 puts "222222222222222222222222"
