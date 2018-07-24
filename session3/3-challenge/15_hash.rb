@@ -47,4 +47,22 @@
 # middle head                        # => 3
 
 
+def middle(train)
+  (train[:data].to_f / 2).ceil
+end
 
+
+=begin
+ head = {:data => 1, :next => nil}
+p  middle head                        # => 1
+ head = {:data => 2, :next => head}
+p  middle head                        # => 1
+ head = {:data => 3, :next => head}
+p  middle head                        # => 2
+ head = {:data => 4, :next => head}
+p  middle head                        # => 2
+ head = {:data => 5, :next => head}
+p  middle head                        # => 3
+ head = {:data => 6, :next => head}
+p  middle head                        # => 3
+=end

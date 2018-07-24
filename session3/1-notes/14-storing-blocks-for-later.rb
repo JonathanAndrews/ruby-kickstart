@@ -12,7 +12,7 @@ class CollegeStudent
   def birthday!
     @age += 1
     return "#{@age}: study :(" unless @age == 21
-    do_when_twenty_one.call @age
+    @do_when_twenty_one.call @age
   end
 
 end

@@ -9,5 +9,26 @@
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
 
+def staircase n
+  i = 1
+  hash = {}
+  until n < i
+    if i.odd?
+      hash[i] = array_filler(i)
+    end
+    i += 1
+  end
+  hash
+end
 
-
+def array_filler(number)
+  array = []
+  j = 1
+  until number < j
+    if j.even?
+      array << j
+    end
+    j +=1
+  end
+  array
+end

@@ -15,3 +15,16 @@
 #
 # line_sums('nums.txt')   # =>   808 + 919 + 822 + 876 + 974   # =>   4399
 
+def line_sums(name)
+  sum_array = []
+  File.foreach(name) do |line|
+    array = line.split(' ')
+    arrayb = []
+    array.each do |x|
+      arrayb << x.to_i
+    end
+    arrayb.sort!
+    sum_array << arrayb[-1]
+  end
+  sum_array.sum
+end

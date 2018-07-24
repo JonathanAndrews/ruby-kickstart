@@ -6,3 +6,16 @@
 #
 # first_pos "The dog and the cat and the cow" # => {"The" => 0, "dog" => 1, "and" => 2, "the" => 3, "cat" => 4, "cow" => 7}
 
+def first_pos(string)
+  array = string.split
+  hash = {}
+  for i in 0...array.length do
+    if hash[array[i]] == nil
+      hash[array[i]] = i
+    end
+  end
+  hash
+end
+
+
+#p first_pos "The dog and the cat and the cow"

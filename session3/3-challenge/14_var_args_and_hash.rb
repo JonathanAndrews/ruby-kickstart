@@ -23,5 +23,52 @@
 # problem_14 2,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => true
 # problem_14 3,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
 
+def problem_14(*input)
+  if input[0] == nil then input.push(0) end
+  if input[-1].is_a? Integer then input << {:problem => :count_clumps} end
+  if input[-1][:problem] == :same_ends
+    same_ends(*input[0..-2])
+  else
+    count_clumps(*input[0..-2])
+  end
+end
+
+def count_clumps(*array)
+  same_clump = false
+  counter = 0
+  for i in 0...(array.length - 1)
+    x = array[i] <=> array[i + 1]
+    if x == 0
+      if same_clump == false
+        counter += 1
+      end
+      same_clump = true
+    else
+      same_clump = false
+    end
+  end
+  return counter
+end
+
+def same_ends(*array)
+  n = array.shift
+  if n == 0 then return true end
+  return  array[0...n] == array[(-n)..-1] ? true : false
+end
 
 
+
+
+=begin
+p problem_14 1, 1, 2, 1, 1    # => 2
+p problem_14 1, 2, 2, 3, 4, 4, :problem => :count_clumps    # => 2
+p problem_14 1, 1, 2, 1, 1,    :problem => :count_clumps    # => 2
+p problem_14 1, 1, 1, 1, 1,    :problem => :count_clumps    # => 1
+#
+
+p problem_14 0,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => true
+p problem_14 1,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
+p problem_14 2,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => true
+p problem_14 3,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
+
+=end 

@@ -56,5 +56,26 @@
 
 
 
+def your_sort(array, &block)
 
+  if block == nil
+    block = Proc.new do |a, b|
+      a <=> b
+    end
+  end
 
+  made_change = true
+
+  while made_change == true
+    made_change = false
+#    counter = 0
+    for i in 0...(array.length - 1)
+      x = block.call(array[i], array[i+1])
+      if x == 1
+        array[i], array[i+1] = array[i+1], array[i]
+        made_change = true
+      end
+    end
+  end
+  array
+end

@@ -29,5 +29,31 @@
 
 class ApplicationController
   def body_class
+    if @body_class
+      return @body_class
+    end
+    @body_class = ""
+    def @body_class.<<(string)
+      unless length == 0
+        concat(" #{string}")
+      else
+        concat("#{string}")
+      end
+    end
+    @body_class
   end
 end
+
+
+
+
+=begin
+controller = ApplicationController.new
+p controller.body_class                 # => ""
+controller.body_class << 'admin'
+p controller.body_class                 # => "admin"
+controller.body_class << 'category'
+p controller.body_class                 # => "admin category"
+controller.body_class << 'page' << 'order'
+p controller.body_class                 # => "admin category page order"
+=end 

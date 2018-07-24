@@ -26,3 +26,19 @@
 #   The fourth time the block is passed  35 , 10 and it returns 45
 #   The method then returns 45
 #
+
+
+
+def passthrough(range, initial_value, &block)
+result = initial_value
+  range.each do |num|
+    result = yield(result, num )
+  end
+result
+end
+
+
+
+puts  passthrough 5..10 , 0 do |sum, num|
+   sum + num
+ end

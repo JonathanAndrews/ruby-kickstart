@@ -19,3 +19,21 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def match_maker(key, *input_data)
+  data = []
+  input_data.each_slice(2) { |a, b| data << [a, b]}
+  storage = []
+  data.each do |x|
+    i = (x[0] ? true : false)
+    j = (x[1] ? true : false)
+    storage << (i == j ? "similarly" : "oppositely")
+  end
+  result = []
+  storage.each do |y|
+    if key == true && y == "oppositely" then result << true
+    elsif key == false && y == "similarly" then result << true
+    else result << false
+    end
+  end
+  result
+end

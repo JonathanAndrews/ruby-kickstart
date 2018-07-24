@@ -31,25 +31,27 @@
 #   end
 # end
 
+def array_init(size = 5, &block)
+  if block == nil
+    array = Array.new(size) { |i| (i * 100).to_s }
+  else
+    array = Array.new(size) { |i| block.call i }
+  end
+  array
+end
 
+=begin
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+p array_init(2) { |i| i.to_s }    # => ['0', '1']
+p array_init { |i| i.to_s }       # => ['0', '1', '2', '3', '4']
+p array_init 2                    # => ['0', '100']
+p array_init                      # => ['0', '100', '200', '300', '400']
+p array_init { 'hi' }              # => ['hi', 'hi', 'hi', 'hi', 'hi']
+p array_init(10) { |i|            # => [0, -5, 400, -15, 800, -25, 1200, -35, 1600, -45]
+    if i % 2 == 0
+      i * 200
+    else
+      i * -5
+    end
+  }
+=end 

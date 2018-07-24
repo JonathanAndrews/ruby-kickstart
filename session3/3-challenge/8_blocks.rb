@@ -27,9 +27,20 @@
 
 class Person
 
-  attr_accessor :name
+  attr_accessor :name, :age, :quote
 
-  def initialize( &initializer )
+  def initialize( hash={}, &initializer)
+
+    default_proc = Proc.new {}
+
+    if initializer == nil
+      initializer = default_proc
+    end
+
+    self.name = hash[:name]
+    self.quote = hash[:quote]
+    self.age = hash[:age]
+
     @initializer = initializer
     initializer.call self
   end

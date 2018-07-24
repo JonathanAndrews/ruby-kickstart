@@ -1,4 +1,6 @@
-# If you struggle on this question for ~30 minutes and aren't getting anywhere, look at the solutions file, try to understand the code, then close the file, come back here, and try again to solve it.
+# If you struggle on this question for ~30 minutes and aren't getting anywhere, look at
+# the solutions file, try to understand the code, then close the file, come back here,
+# and try again to solve it.
 
 # A stack is a collection of objects, where when you add a new object to the collection,
 # called "pushing", it becomes the first object that you remove from the collection,
@@ -71,4 +73,3 @@ class Stack
     output
   end
 end
-
