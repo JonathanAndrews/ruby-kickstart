@@ -47,7 +47,7 @@ end
 
 
 
-=begin
+
 controller = ApplicationController.new
 p controller.body_class                 # => ""
 controller.body_class << 'admin'
@@ -56,4 +56,3 @@ controller.body_class << 'category'
 p controller.body_class                 # => "admin category"
 controller.body_class << 'page' << 'order'
 p controller.body_class                 # => "admin category page order"
-=end 

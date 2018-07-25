@@ -3,7 +3,7 @@
 #  YOU MUST HAVE CHALLENGE ONE PASSING BEFORE ATTEMPTING THIS CHALLENGE   #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #
-# If you struggle on this question for ~30 minutes and aren't getting anywhere, look at the solution, try to understand the code, then close the file, come back here, and try again to solve it. 
+# If you struggle on this question for ~30 minutes and aren't getting anywhere, look at the solution, try to understand the code, then close the file, come back here, and try again to solve it.
 #
 # My boss can now add CSS classes from his controller, so he is happy.
 # But there are a lot of controller methods, and so he has to go to a lot of different
@@ -84,7 +84,17 @@
 #   * First think about where you need to put this method so that it will be available to all the controllers
 #   * You are going to need to combine variable length parameters with an options hash. This can't be done in the method signature
 
-
-
-
-
+class ApplicationController
+  def self.css_classes(*inputs)
+      if inputs[-1].is_a? Hash
+        hash = inputs.pop
+      else
+        hash = {}
+      end
+      before_filter hash do |controller|
+        inputs.each do |i|
+          controller.body_class << i
+        end
+      end
+  end
+end
